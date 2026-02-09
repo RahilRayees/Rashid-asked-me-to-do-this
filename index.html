@@ -1,1 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mahii 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #ffc1e3;
+            --accent: #ff8fab;
+            --text: #4a4a4a;
+            --light: #fff5f8;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef5 0%, #ffe5f1 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            opacity: 0.1;
+            animation: float-up 15s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.1;
+            }
+
+            90% {
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            z-index: 1;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #page1 {
+            text-align: center;
+        }
+
+        .main-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .image-container {
+            width: clamp(250px, 45vw, 400px);
+            height: clamp(250px, 45vw, 400px);
+            margin: 0 auto 3rem;
+            animation: fadeInScale 1s ease 0.6s backwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(255, 107, 157, 0.3));
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.9s backwards;
+        }
+
+        .btn {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+        }
+
+        #yesBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        #noBtn {
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: 2px solid var(--secondary);
+        }
+
+        #noBtn:hover {
+            background: var(--light);
+        }
+
+        /* Page 2 */
+        #page2 {
+            text-align: center;
+        }
+
+        .celebration-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: bounceIn 1s ease;
+        }
+
+        .love-message {
+            max-width: 600px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.8;
+            color: var(--text);
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease 0.5s backwards;
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            animation: fadeInUp 1s ease 1s backwards;
+        }
+
+        /* Page 3 - Letter */
+        #page3 {
+            background: linear-gradient(135deg, #fff9fc 0%, #ffe8f3 100%);
+        }
+
+        .letter-container {
+            max-width: 700px;
+            background: white;
+            padding: clamp(30px, 5vw, 60px);
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(255, 107, 157, 0.2);
+            animation: fadeInScale 0.8s ease;
+            border: 3px solid var(--secondary);
+        }
+
+        .letter-header {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .letter-body {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .letter-body p {
+            margin-bottom: 1.2rem;
+        }
+
+        .signature {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            text-align: right;
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .next-btn {
+            display: block;
+            margin: 2rem auto 0;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+            color: white;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+        }
+
+        /* Page 4 - Date Questions */
+        #page4 {
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe8f3 100%);
+            overflow-y: auto;
+        }
+
+        .date-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInScale 0.8s ease;
+            padding: 20px;
+        }
+
+        .date-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .date-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text);
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease 0.3s backwards;
+        }
+
+        .question-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.15);
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+
+        .question-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .date-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px 20px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .date-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .option-btn.selected {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .submit-date-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+            color: white;
+            padding: 18px 60px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            animation: fadeIn 1s ease 0.9s backwards;
+        }
+
+        .submit-date-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Page 5 - Final */
+        #page5 {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+        }
+
+        .final-content {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+        }
+
+        .final-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .final-message {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease 0.5s backwards;
+        }
+
+        .heart-large {
+            font-size: 5rem;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            .letter-container {
+                margin: 20px;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Page 1: The Question -->
+    <div class="page active" id="page1">
+        <h1 class="main-title">Mahii...</h1>
+        <p class="subtitle">Will you be my Valentine?</p>
+
+        <div class="image-container">
+            <img src="2image.png" </div>
+
+            <div class="buttons-container">
+                <button class="btn" id="yesBtn">Yes! 💕</button>
+                <button class="btn" id="noBtn">Maybe not... 🥺</button>
+            </div>
+        </div>
+
+        <!-- Page 2: Celebration -->
+        <div class="page" id="page2">
+            <h1 class="celebration-title">I knew it! 💗</h1>
+            <div class="love-message">
+                <p>Mahii, from the moment I met you, my world became brighter. Your smile lights up even my darkest
+                    days, and your laugh is the sweetest melody I've ever heard.</p>
+                <p>Every moment with you feels like a scene from my favorite dream. You make ordinary days extraordinary
+                    just by being you.</p>
+            </div>
+            <button class="btn continue-btn" id="continueBtn">There's more... 💌</button>
+
+            <div class="audio-control" id="audioControl">
+                <svg class="audio-icon" id="playIcon" style="display:none;" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+                <svg class="audio-icon" id="pauseIcon" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                </svg>
+            </div>
+            <audio id="bgMusic" loop>
+                <source src="music.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Page 3: Love Letter -->
+        <div class="page" id="page3">
+            <div class="letter-container">
+                <h2 class="letter-header">A Letter For You</h2>
+                <div class="letter-body">
+                    <p>My dearest Mahii,</p>
+                    <p>Words feel inadequate when I try to express what you mean to me. You're not just someone I care
+                        about, you're the person who makes me want to be better every single day.</p>
+                    <p>Your kindness touches everyone around you, but I feel especially lucky to be on the receiving end
+                        of your warmth. The way you see the world, with such beauty and wonder, reminds me to appreciate
+                        the little things I used to overlook.</p>
+                    <p>When I think about the future, all I know for certain is that I want you in it. Your presence
+                        makes everything better, brighter, and infinitely more meaningful.</p>
+                    <p>Thank you for being exactly who you are. Thank you for choosing me.</p>
+                </div>
+                <p class="signature">Forever yours ♡</p>
+                <button class="btn next-btn" id="nextBtn">One more thing... 🌸</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Date Questions -->
+        <div class="page" id="page4">
+            <div class="date-container">
+                <h1 class="date-title">So... Mahii</h1>
+                <p class="date-subtitle">Let's plan our perfect date! 💕</p>
+
+                <div class="question-section">
+                    <h3>When are you free?</h3>
+                    <input type="date" class="date-input" id="dateInput" min="">
+                </div>
+
+                <div class="question-section">
+                    <h3>What would you like to eat?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn food-option" data-value="italian">Italian 🍝</button>
+                        <button class="option-btn food-option" data-value="chinese">Chinese 🥡</button>
+                        <button class="option-btn food-option" data-value="indian">Indian 🍛</button>
+                        <button class="option-btn food-option" data-value="mexican">Mexican 🌮</button>
+                        <button class="option-btn food-option" data-value="japanese">Japanese 🍱</button>
+                        <button class="option-btn food-option" data-value="surprise">Surprise me! ✨</button>
+                    </div>
+                </div>
+
+                <div class="question-section">
+                    <h3>What movie should we watch?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn movie-option" data-value="romance">Romance 💕</button>
+                        <button class="option-btn movie-option" data-value="comedy">Comedy 😂</button>
+                        <button class="option-btn movie-option" data-value="action">Action 🎬</button>
+                        <button class="option-btn movie-option" data-value="horror">Horror 👻</button>
+                        <button class="option-btn movie-option" data-value="anime">Anime 🎌</button>
+                        <button class="option-btn movie-option" data-value="youChoose">You choose! 🎭</button>
+                    </div>
+                </div>
+
+                <button class="btn submit-date-btn" id="submitDateBtn" disabled>Perfect! Let's do it 💝</button>
+            </div>
+        </div>
+
+        <!-- Page 5: Final Message -->
+        <div class="page" id="page5">
+            <div class="final-content">
+                <h1 class="final-title">Happy Valentine's Day, Mahii</h1>
+                <p class="final-message">You are my favorite person, my best friend, and the love of my life. Here's to
+                    all the adventures we've shared and all the beautiful moments still to come.</p>
+                <div class="heart-large">❤️</div>
+            </div>
+        </div>
+
+        <script>
+            // Initialize
+            let noClickCount = 0;
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            let selectedFood = null;
+            let selectedMovie = null;
+            let selectedDate = null;
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('dateInput');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+
+            // Create floating hearts background
+            function createFloatingHearts() {
+                const heartsBg = document.getElementById('heartsBg');
+                const heartSymbols = ['❤️', '💕', '💗', '💖', '🌸', '🌺'];
+
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-float';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    heart.style.animationDelay = Math.random() * 15 + 's';
+                    heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    heartsBg.appendChild(heart);
+                }
+            }
+
+            createFloatingHearts();
+
+            // No button behavior
+            noBtn.addEventListener('click', function () {
+                noClickCount++;
+
+                const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+                const currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
+                yesBtn.style.fontSize = (currentSize + 5) + 'px';
+                yesBtn.style.padding = (currentPadding + 3) + 'px ' + (currentPadding * 2 + 6) + 'px';
+
+                const currentNoSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
+                const currentNoPadding = parseFloat(window.getComputedStyle(noBtn).paddingTop);
+                noBtn.style.fontSize = (currentNoSize - 3) + 'px';
+                noBtn.style.padding = (currentNoPadding - 2) + 'px ' + (currentNoPadding * 2 - 4) + 'px';
+
+                const messages = [
+                    'Are you sure? 🥺',
+                    'Please reconsider 💕',
+                    'Think about it... 🌸',
+                    'Pretty please? 🌺',
+                    'Just say yes! 💗'
+                ];
+
+                if (noClickCount <= messages.length) {
+                    noBtn.textContent = messages[noClickCount - 1];
+                }
+
+                if (noClickCount >= 5) {
+                    noBtn.style.opacity = '0';
+                    noBtn.style.transform = 'scale(0)';
+                    setTimeout(() => {
+                        noBtn.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            // Yes button - go to page 2
+            yesBtn.addEventListener('click', function () {
+                createConfetti();
+                createHeartsExplosion();
+                setTimeout(() => {
+                    goToPage(2);
+                    // Auto-play music
+                    const bgMusic = document.getElementById('bgMusic');
+                    bgMusic.volume = 0.3;
+                    bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                }, 1000);
+            });
+
+            // Audio control
+            const audioControl = document.getElementById('audioControl');
+            const bgMusic = document.getElementById('bgMusic');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+
+            audioControl.addEventListener('click', function () {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    pauseIcon.style.display = 'block';
+                    playIcon.style.display = 'none';
+                } else {
+                    bgMusic.pause();
+                    pauseIcon.style.display = 'none';
+                    playIcon.style.display = 'block';
+                }
+            });
+
+            // Confetti effect
+            function createConfetti() {
+                const colors = ['#ff6b9d', '#ffc1e3', '#ff8fab', '#ffa8c5', '#ff9ec4'];
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 3000);
+                }
+            }
+
+            // Hearts explosion
+            function createHeartsExplosion() {
+                const hearts = ['❤️', '💕', '💗', '💖', '💝'];
+                for (let i = 0; i < 30; i++) {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = '30px';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+
+                    const angle = (Math.PI * 2 * i) / 30;
+                    const velocity = 200 + Math.random() * 100;
+                    const tx = Math.cos(angle) * velocity;
+                    const ty = Math.sin(angle) * velocity;
+
+                    document.body.appendChild(heart);
+
+                    heart.animate([
+                        { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+                        { transform: `translate(calc(-50% + $${tx}px), calc(-50% + $${ty}px)) scale(1)`, opacity: 0 }
+                    ], {
+                        duration: 1500,
+                        easing: 'cubic-bezier(0, .9, .57, 1)'
+                    });
+
+                    setTimeout(() => heart.remove(), 1500);
+                }
+            }
+
+            // Page navigation
+            function goToPage(pageNum) {
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById('page' + pageNum).classList.add('active');
+
+                if (pageNum === 2) {
+                    setTimeout(() => {
+                        createConfetti();
+                    }, 500);
+                }
+            }
+
+            // Continue button
+            document.getElementById('continueBtn').addEventListener('click', function () {
+                goToPage(3);
+            });
+
+            // Next button
+            document.getElementById('nextBtn').addEventListener('click', function () {
+                goToPage(4);
+            });
+
+            // Date selection
+            dateInput.addEventListener('change', function () {
+                selectedDate = this.value;
+                checkDateFormComplete();
+            });
+
+            // Food selection
+            document.querySelectorAll('.food-option').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.food-option').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedFood = this.dataset.value;
+                    checkDateFormComplete();
+                });
+            });
+
+            // Movie selection
+            document.querySelectorAll('.movie-option').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.movie-option').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedMovie = this.dataset.value;
+                    checkDateFormComplete();
+                });
+            });
+
+            // Check if all fields are filled
+            function checkDateFormComplete() {
+                const submitBtn = document.getElementById('submitDateBtn');
+                if (selectedDate && selectedFood && selectedMovie) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            }
+
+            // Submit date - THIS WAS THE BUG FIX!
+            document.getElementById('submitDateBtn').addEventListener('click', function () {
+                if (!this.disabled) {
+                    createConfetti();
+                    createHeartsExplosion();
+                    setTimeout(() => {
+                        goToPage(5);
+                        setTimeout(() => {
+                            createConfetti();
+                        }, 500);
+                    }, 1000);
+                }
+            });
+        </script>
+</body>
+
+</html>
