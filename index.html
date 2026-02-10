@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Mahii 💕</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -48,10 +51,23 @@
         }
 
         @keyframes float-up {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.1; }
-            90% { opacity: 0.1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.1;
+            }
+
+            90% {
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .page {
@@ -237,8 +253,17 @@
         }
 
         /* Page 3 - Letter */
+        /* Page 3 - Letter */
         #page3 {
             background: linear-gradient(135deg, #fff9fc 0%, #ffe8f3 100%);
+            overflow-y: auto;
+            /* ADD THIS */
+            align-items: flex-start;
+            /* ADD THIS */
+            padding-top: 40px;
+            /* ADD THIS */
+            padding-bottom: 40px;
+            /* ADD THIS */
         }
 
         .letter-container {
@@ -291,6 +316,15 @@
         #page4 {
             background: linear-gradient(135deg, #fff5f8 0%, #ffe8f3 100%);
             overflow-y: auto;
+            /* Already there ✓ */
+            align-items: flex-start;
+            /* ADD THIS */
+            padding-top: 40px;
+            /* ADD THIS */
+            padding-bottom: 40px;
+            /* ADD THIS */
+            justify-content: flex-start;
+            /* ADD THIS */
         }
 
         .date-container {
@@ -299,8 +333,10 @@
             text-align: center;
             animation: fadeInScale 0.8s ease;
             padding: 20px;
-            max-height: 90vh; /* ← Add this */
-            overflow-y: auto; /* ← Add this */
+            max-height: 90vh;
+            /* ← Add this */
+            overflow-y: auto;
+            /* ← Add this */
         }
 
         .date-title {
@@ -446,35 +482,81 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         @media (max-width: 768px) {
@@ -484,18 +566,88 @@
 
             .letter-container {
                 margin: 20px;
-            }
-            .image-container {
-                width: clamp(200px, 60vw, 300px);
-                height: clamp(200px, 60vw, 300px);
+                padding: 25px;
+                max-width: 90%;
             }
 
             .options-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* SCROLLABLE PAGES FIX */
+            #page3,
+            #page4 {
+                padding: 30px 15px !important;
+                justify-content: flex-start !important;
+                align-items: flex-start !important;
+            }
+
+            .page {
+                overflow-y: auto !important;
+            }
+
+            /* Letter page mobile */
+            .letter-body {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .letter-header {
+                font-size: 1.8rem;
+            }
+
+            /* Buttons easier to tap */
+            .btn {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+                min-height: 50px;
+            }
+
+            .next-btn,
+            .continue-btn,
+            .submit-date-btn {
+                width: 100%;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Date page mobile */
+            .date-container {
+                padding: 15px;
+            }
+
+            .question-section {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+
+            .date-title {
+                font-size: 2rem;
+            }
+
+            .date-subtitle {
+                font-size: 1.2rem;
+            }
+
+            /* Image sizing */
+            .image-container {
+                width: clamp(200px, 70vw, 300px);
+                height: clamp(200px, 70vw, 300px);
+                margin-bottom: 2rem;
+            }
+
+            /* Audio control mobile */
+            .audio-control {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="hearts-bg" id="heartsBg"></div>
 
@@ -503,7 +655,7 @@
     <div class="page active" id="page1">
         <h1 class="main-title">Mahii...</h1>
         <p class="subtitle">Will you be my Valentine?</p>
-        
+
         <div class="image-container">
             <img src="2image.png">
         </div>
@@ -518,17 +670,19 @@
     <div class="page" id="page2">
         <h1 class="celebration-title">I knew it! 💗</h1>
         <div class="love-message">
-            <p>Mahii, from the moment I met you, my world became brighter. Your smile lights up even my darkest days, and your laugh is the sweetest melody I've ever heard.</p>
-            <p>Every moment with you feels like a scene from my favorite dream. You make ordinary days extraordinary just by being you.</p>
+            <p>Mahii, from the moment I met you, my world became brighter. Your smile lights up even my darkest days,
+                and your laugh is the sweetest melody I've ever heard.</p>
+            <p>Every moment with you feels like a scene from my favorite dream. You make ordinary days extraordinary
+                just by being you.</p>
         </div>
         <button class="btn continue-btn" id="continueBtn">There's more... 💌</button>
-        
+
         <div class="audio-control" id="audioControl">
             <svg class="audio-icon" id="playIcon" style="display:none;" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
+                <path d="M8 5v14l11-7z" />
             </svg>
             <svg class="audio-icon" id="pauseIcon" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
         </div>
         <audio id="bgMusic" loop>
@@ -542,9 +696,13 @@
             <h2 class="letter-header">A Letter For You</h2>
             <div class="letter-body">
                 <p>My dearest Mahii,</p>
-                <p>Words feel inadequate when I try to express what you mean to me. You're not just someone I care about, you're the person who makes me want to be better every single day.</p>
-                <p>Your kindness touches everyone around you, but I feel especially lucky to be on the receiving end of your warmth. The way you see the world, with such beauty and wonder, reminds me to appreciate the little things I used to overlook.</p>
-                <p>When I think about the future, all I know for certain is that I want you in it. Your presence makes everything better, brighter, and infinitely more meaningful.</p>
+                <p>Words feel inadequate when I try to express what you mean to me. You're not just someone I care
+                    about, you're the person who makes me want to be better every single day.</p>
+                <p>Your kindness touches everyone around you, but I feel especially lucky to be on the receiving end of
+                    your warmth. The way you see the world, with such beauty and wonder, reminds me to appreciate the
+                    little things I used to overlook.</p>
+                <p>When I think about the future, all I know for certain is that I want you in it. Your presence makes
+                    everything better, brighter, and infinitely more meaningful.</p>
                 <p>Thank you for being exactly who you are. Thank you for choosing me.</p>
             </div>
             <p class="signature">Forever yours ♡</p>
@@ -557,7 +715,7 @@
         <div class="date-container">
             <h1 class="date-title">So... Mahii</h1>
             <p class="date-subtitle">Let's plan our perfect date! 💕</p>
-            
+
             <div class="question-section">
                 <h3>When are you free?</h3>
                 <input type="date" class="date-input" id="dateInput" min="">
@@ -595,7 +753,8 @@
     <div class="page" id="page5">
         <div class="final-content">
             <h1 class="final-title">Happy Valentine's Day, Mahii</h1>
-            <p class="final-message">You are my favorite person, my best friend, and the love of my life. Here's to all the adventures we've shared and all the beautiful moments still to come.</p>
+            <p class="final-message">You are my favorite person, my best friend, and the love of my life. Here's to all
+                the adventures we've shared and all the beautiful moments still to come.</p>
             <div class="heart-large">❤️</div>
         </div>
     </div>
@@ -618,7 +777,7 @@
         function createFloatingHearts() {
             const heartsBg = document.getElementById('heartsBg');
             const heartSymbols = ['❤️', '💕', '💗', '💖', '🌸', '🌺'];
-            
+
             for (let i = 0; i < 15; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart-float';
@@ -634,19 +793,19 @@
         createFloatingHearts();
 
         // No button behavior
-        noBtn.addEventListener('click', function() {
+        noBtn.addEventListener('click', function () {
             noClickCount++;
-            
+
             const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
             const currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
             yesBtn.style.fontSize = (currentSize + 5) + 'px';
             yesBtn.style.padding = (currentPadding + 3) + 'px ' + (currentPadding * 2 + 6) + 'px';
-            
+
             const currentNoSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
             const currentNoPadding = parseFloat(window.getComputedStyle(noBtn).paddingTop);
             noBtn.style.fontSize = (currentNoSize - 3) + 'px';
             noBtn.style.padding = (currentNoPadding - 2) + 'px ' + (currentNoPadding * 2 - 4) + 'px';
-            
+
             const messages = [
                 'Are you sure? 🥺',
                 'Please reconsider 💕',
@@ -654,11 +813,11 @@
                 'Pretty please? 🌺',
                 'Just say yes! 💗'
             ];
-            
+
             if (noClickCount <= messages.length) {
                 noBtn.textContent = messages[noClickCount - 1];
             }
-            
+
             if (noClickCount >= 5) {
                 noBtn.style.opacity = '0';
                 noBtn.style.transform = 'scale(0)';
@@ -669,7 +828,7 @@
         });
 
         // Yes button - go to page 2
-        yesBtn.addEventListener('click', function() {
+        yesBtn.addEventListener('click', function () {
             createConfetti();
             createHeartsExplosion();
             setTimeout(() => {
@@ -687,7 +846,7 @@
         const playIcon = document.getElementById('playIcon');
         const pauseIcon = document.getElementById('pauseIcon');
 
-        audioControl.addEventListener('click', function() {
+        audioControl.addEventListener('click', function () {
             if (bgMusic.paused) {
                 bgMusic.play();
                 pauseIcon.style.display = 'block';
@@ -711,7 +870,7 @@
                 confetti.style.animationDelay = Math.random() * 0.5 + 's';
                 confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
                 document.body.appendChild(confetti);
-                
+
                 setTimeout(() => confetti.remove(), 3000);
             }
         }
@@ -728,22 +887,22 @@
                 heart.style.top = '50%';
                 heart.style.pointerEvents = 'none';
                 heart.style.zIndex = '1000';
-                
+
                 const angle = (Math.PI * 2 * i) / 30;
                 const velocity = 200 + Math.random() * 100;
                 const tx = Math.cos(angle) * velocity;
                 const ty = Math.sin(angle) * velocity;
-                
+
                 document.body.appendChild(heart);
-                
+
                 heart.animate([
                     { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
-                    { transform: `translate(calc(-50% + $${tx}px), calc(-50% + $${ty}px)) scale(1)`, opacity: 0 }
+                    { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1)` }
                 ], {
                     duration: 1500,
                     easing: 'cubic-bezier(0, .9, .57, 1)'
                 });
-                
+
                 setTimeout(() => heart.remove(), 1500);
             }
         }
@@ -754,7 +913,7 @@
                 page.classList.remove('active');
             });
             document.getElementById('page' + pageNum).classList.add('active');
-            
+
             if (pageNum === 2) {
                 setTimeout(() => {
                     createConfetti();
@@ -763,24 +922,24 @@
         }
 
         // Continue button
-        document.getElementById('continueBtn').addEventListener('click', function() {
+        document.getElementById('continueBtn').addEventListener('click', function () {
             goToPage(3);
         });
 
         // Next button
-        document.getElementById('nextBtn').addEventListener('click', function() {
+        document.getElementById('nextBtn').addEventListener('click', function () {
             goToPage(4);
         });
 
         // Date selection
-        dateInput.addEventListener('change', function() {
+        dateInput.addEventListener('change', function () {
             selectedDate = this.value;
             checkDateFormComplete();
         });
 
         // Food selection
         document.querySelectorAll('.food-option').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 document.querySelectorAll('.food-option').forEach(b => b.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedFood = this.dataset.value;
@@ -790,7 +949,7 @@
 
         // Movie selection
         document.querySelectorAll('.movie-option').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 document.querySelectorAll('.movie-option').forEach(b => b.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedMovie = this.dataset.value;
@@ -808,18 +967,30 @@
         }
 
         // Submit date - THIS WAS THE BUG FIX!
-        document.getElementById('submitDateBtn').addEventListener('click', function() {
+        document.getElementById('submitDateBtn').addEventListener('click', function () {
             if (!this.disabled) {
+                const dateValue = dateInput.value;
+
+                const subject = encodeURIComponent("Mahii's Date Preferences 💕");
+                const body = encodeURIComponent(
+                    `Date: ${dateValue}\n` +
+                    `Food: ${selectedFood}\n` +
+                    `Movie: ${selectedMovie}\n\n` +
+                    `Mahii said YES! 💕`
+                );
+
+                window.open(
+                    `mailto:rashidrayees71@gmail.com?subject=${subject}&body=${body}`,
+                    '_blank'
+                );
+
                 createConfetti();
                 createHeartsExplosion();
-                setTimeout(() => {
-                    goToPage(5);
-                    setTimeout(() => {
-                        createConfetti();
-                    }, 500);
-                }, 1000);
+                setTimeout(() => goToPage(5), 1000);
             }
         });
+
     </script>
 </body>
+
 </html>
